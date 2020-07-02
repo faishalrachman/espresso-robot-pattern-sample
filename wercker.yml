@@ -1,5 +1,5 @@
 # box: nao20010128nao/android-build:latest
-box: inv3rse/android-sdk-27
+box: inv3rse/android-sdk-27:1.0.3
 # increase no-response-timeout from default (5 minutes) to 15 minutes
 no-response-timeout: 75
 # increase default timeout from default (25 minutes) to 75 minutes
