@@ -18,15 +18,15 @@ class LoginTest {
     @get:Rule
     val mActivityTestRule: ActivityTestRule<MainActivity> = ActivityTestRule(MainActivity::class.java)
 
-    @get:Rule
-    val falconSpoonRule = FalconSpoonRule()
+//    @get:Rule
+//    val falconSpoonRule = FalconSpoonRule()
 
 
     @Test
     fun loginMissingEmailPassword() {
         login {
             clickLogin()
-            screenShot(falconSpoonRule, "loginMissingEmailPassword")
+//            screenShot(falconSpoonRule, "loginMissingEmailPassword")
             matchErrorText(string(R.string.missing_fields))
         }
     }
@@ -36,7 +36,7 @@ class LoginTest {
         login {
             setEmail("mail@example.com")
             clickLogin()
-            screenShot(falconSpoonRule, "loginMissingPassword")
+//            screenShot(falconSpoonRule, "loginMissingPassword")
             matchErrorText(string(R.string.missing_fields))
         }
     }
@@ -47,7 +47,7 @@ class LoginTest {
             setEmail("mail@example.com")
             setPassword("wrong")
             clickLogin()
-            screenShot(falconSpoonRule, "loginWrongPassword")
+//            screenShot(falconSpoonRule, "loginWrongPassword")
             matchErrorText(string(R.string.login_fail))
         }
 
@@ -59,7 +59,7 @@ class LoginTest {
             setEmail("mail@example.com")
             setPassword("pass")
             clickLogin()
-            screenShot(falconSpoonRule, "loginSuccess")
+//            screenShot(falconSpoonRule, "loginSuccess")
             matchText(R.id.tvName, string(R.string.name_surname))
         }
     }
@@ -69,17 +69,17 @@ class LoginTest {
         login {
             setEmail("mail@example.com")
             setPassword("pass")
-            screenShot(falconSpoonRule, "login")
+//            screenShot(falconSpoonRule, "login")
             clickLogin()
-            screenShot(falconSpoonRule,"profile")
+//            screenShot(falconSpoonRule,"profile")
         }
         profile {
             clickSettings()
-            screenShot(falconSpoonRule,"settings")
+//            screenShot(falconSpoonRule,"settings")
             toggleNotifications()
-            screenShot(falconSpoonRule,"toggle1")
+//            screenShot(falconSpoonRule,"toggle1")
             toggleNightMode()
-            screenShot(falconSpoonRule,"toggle2")
+//            screenShot(falconSpoonRule,"toggle2")
         }
     }
 

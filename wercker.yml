@@ -1,0 +1,24 @@
+# box: nao20010128nao/android-build:latest
+box: runmymind/docker-android-sdk:ubuntu-standalone
+# increase no-response-timeout from default (5 minutes) to 15 minutes
+no-response-timeout: 75
+# increase default timeout from default (25 minutes) to 75 minutes
+command-timeout: 75
+# Build definition
+build:
+  box: thedrhax/android-avd
+  # The steps that will be executed on build
+  steps:
+    - script:
+        name: show base information
+        code: |
+          ./gradlew -v
+          echo $ANDROID_HOME
+    - script:
+        name: run test app
+        code: |
+          sudo apt-get install -yy socat
+          socat tcp-listen:5555,bind=127.0.0.1,fork tcp:IP_OF_AVD_CONTAINER:5555 & PID=$!
+          ./gradlew connectedAndroidTest
+          adb shell
+          kill $PID
